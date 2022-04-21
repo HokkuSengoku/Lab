@@ -4,13 +4,12 @@ Random rn = new Random();
 int[] IntMassive()
 {
     Console.WriteLine("Одномерный массив d типа Int:");
-    var d = new[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+    var d = new int[12];
     var q = 3;
     for (var i = 0; i < 12 && q <= 25; i++, q += 2)
     {
         d[i] = q;
         Console.Write(d[i] + " ");
-        Console.WriteLine(q);
     }
     Console.WriteLine();
     return d;
@@ -19,7 +18,7 @@ int[] IntMassive()
 double[] DoubleMassive()
 {
     Console.WriteLine("Одномерный массив x типа Double:");
-    var x = new[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+    var x = new double[15];
     for (var j = 0; j < 15; j++)
     {
         x[j] = Convert.ToDouble(rn.Next(-6, 8));
