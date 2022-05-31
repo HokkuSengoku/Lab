@@ -1,5 +1,7 @@
 ﻿namespace Lab3;
-
+/// <summary>
+/// Тип перечисления, содержащий в себе времена года и их рекомендуемую температуру.
+/// </summary>
 public enum Season
 {
     Spring = 15,
