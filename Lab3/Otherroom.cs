@@ -2,6 +2,13 @@
 
 public class Otherroom : Room
 {
+    /// <summary>
+    /// Конструктор класса.
+    /// </summary>
+    /// <param name="season">Сезон года</param>
+    /// <param name="rname">Название помещения</param>
+    /// <param name="rsquare">Площадь</param>
+    /// <param name="roomtemp">Температура в помещении</param>
     public Otherroom(Season season, string rname, double rsquare, double roomtemp):base(season, rname, rsquare, roomtemp){}
     
     public override void CheckRoomLighting(ILighting light)
@@ -67,7 +74,11 @@ public class Otherroom : Room
                           $"***** Температура в помещении: \n" +
                           $"Температура после изменений: {RoomTempC}");
     }
-
+    /// <summary>
+    /// Переопределенный метод сравнения объектов.
+    /// </summary>
+    /// <param name="obj">Принимает в качестве аргумента объект</param>
+    /// <returns>Возвращает результат сравнения объектов true/false</returns>
     public override bool Equals(object obj)
     {
         if (!(obj is Otherroom temp))
@@ -91,7 +102,10 @@ public class Otherroom : Room
 
         return false;
     }
-    
+    /// <summary>
+    /// Возвращает строку, представляющую текущий объект, в данном случае всю информацию о текущем экземпляре класса.
+    /// </summary>
+    /// <returns></returns>
     public override string ToString() => $"Информация о помещении.\n" +
                                          $"Название помещения: {RoomName} \n" +
                                          $"Площадь помещения: {RoomSquare} \n" +
@@ -103,6 +117,10 @@ public class Otherroom : Room
                                          $"***** Температура в помещении: \n" +
                                          $"Температура после изменений: {RoomTempC}";
 
+    /// <summary>
+    /// Получение хеш-кода названия помещения.
+    /// </summary>
+    /// <returns></returns>
     public override int GetHashCode() => RoomName.GetHashCode();
 
 }
