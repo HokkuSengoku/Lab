@@ -1,4 +1,6 @@
-﻿namespace Lab3;
+﻿using System.ComponentModel.Design;
+
+namespace Lab3;
 
 public class Otherroom : Room
 {
@@ -19,8 +21,8 @@ public class Otherroom : Room
     public class TempBoosting
     {
         private Otherroom parent =  new Otherroom(Season.Winter,"Большой зал", 150.1, 24);
-        private double _tempOverBoost = Double.MaxValue;
-        
+        static double _tempOverBoost = 1.7976931348623157E+308;
+        private double _resultTemperature;
         /// <summary>
         /// Конструкторы вложенного класса
         /// </summary>
@@ -38,15 +40,12 @@ public class Otherroom : Room
         {
             try
             {
-                parent.RoomTempC = checked(_tempOverBoost + parent.RoomTempC);
-                throw new TempException("Исключение связанное с температурой", "Превышена допустимая температура",
-                    DateTime.Now);
+                _resultTemperature = checked((int)_tempOverBoost + (int)parent.RoomTempC);
+
             }
-            catch (TempException e)
+            catch(OverflowException exception)
             {
-                Console.WriteLine("CHECKED and CAUGHT:  " + e.ToString());
-                Console.WriteLine(e.CauseOfError);
-                Console.WriteLine(e.ErrorTimeStamp.ToString());
+                throw new TempException("Исключение связанное с температурой", "Превышение максимальной температуры");
             }
         }
 
@@ -59,6 +58,20 @@ public class Otherroom : Room
             Console.WriteLine($"Температура после максимального повышения температуры без проверки: = {parent.RoomTempC}");
         }
     }
+    /// <summary>
+    /// Метод изменения площади помещения
+    /// </summary>
+    /// <exception cref="SquareLimitException">Исключение вызывается при достижении недопустимого значения</exception>
+    public void ChangeSquare()
+    {
+        double upSquare = 1.7976931348623157E+308;
+        RoomSquare += upSquare;
+        if (RoomSquare > 500)
+        {
+            throw new SquareLimitException("Исключение связанное с площадью", "Площадь избыточна");
+        }
+    }
+    
     public override void CheckRoomLighting(ILighting light)
     {
         if (RoomSquare < 150)

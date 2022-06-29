@@ -2,7 +2,7 @@
 /// <summary>
 /// Класс исключения
 /// </summary>
-public class TempException : Exception
+public class SquareLimitException : Exception
 {
     /// <summary>
     /// Свойство, которое обозначает время возникновения исключения
@@ -11,9 +11,9 @@ public class TempException : Exception
     /// <summary>
     /// Конструкторы
     /// </summary>
-    public TempException(){}
-    public TempException(string message, string cause)
-    :base(message)
+    public SquareLimitException(){}
+    public SquareLimitException(string message, string cause)
+        :base(message)
     {
         CauseOfError = cause;
     }
